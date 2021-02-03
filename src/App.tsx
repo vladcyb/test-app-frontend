@@ -1,7 +1,10 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 
-const App = () => (
-  <div className="app" />
+export const App = () => (
+  <div className="app">
+    <Route exact path="/">
+      Hello
+    </Route>
+  </div>
 );
-
-export default App;
