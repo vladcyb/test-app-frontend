@@ -1,19 +1,12 @@
 import React from 'react';
-import { Link, Redirect, Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import { Masters, Specializations } from './pages';
-import { routes } from './shared/routes';
+import { Navigation } from './components/Navigation';
 import './app.css';
 
 export const App = () => (
   <div className="app">
-    <nav>
-      <div>
-        <Link to={routes.specializations.root}>Specializations</Link>
-      </div>
-      <div>
-        <Link to={routes.masters.root}>Masters</Link>
-      </div>
-    </nav>
+    <Navigation />
     <Route exact path="/">
       <Redirect to="/specializations" />
     </Route>
