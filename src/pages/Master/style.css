@@ -1,9 +1,6 @@
-.masters__table {
-    margin-top: 20px;
-}
-
 .masters__tableHeader {
     display: grid;
+    padding: 20px 0;
     grid-template-columns: repeat(6, 1fr);
 }
 
