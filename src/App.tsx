@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { Masters, Specializations } from './pages';
+import { Master, Specialization } from './pages';
 import { Navigation } from './components/Navigation';
 import { useAppDispatch } from './store/store';
 import { SpecializationThunk } from './store/specializationSlice/thunk';
@@ -22,10 +22,10 @@ export const App = () => {
         <Redirect to="/specializations" />
       </Route>
       <Route exact path="/specializations">
-        <Specializations />
+        <Specialization />
       </Route>
       <Route exact path="/masters">
-        <Masters />
+        <Master />
       </Route>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Specializations = () => (
+export const Specialization = () => (
   <div className="specialization">
     specialization
   </div>

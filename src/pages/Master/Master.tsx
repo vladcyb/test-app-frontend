@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Masters = () => (
+export const Master = () => (
   <div className="masters">
     masters
   </div>
