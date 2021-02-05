@@ -3,10 +3,10 @@ import { StateType } from '../../store/masterSlice/types';
 import './style.css';
 
 type PropsType = {
-  masters: StateType
+  state: StateType
 };
 
-export const Master = ({ masters }: PropsType) => (
+export const Master = ({ state }: PropsType) => (
   <div className="masters">
     <div className="masters__tableHeader">
       <div>id</div>
@@ -16,7 +16,7 @@ export const Master = ({ masters }: PropsType) => (
       <div>patronymic</div>
       <div>specialization</div>
     </div>
-    {masters.data.map((item) => (
+    {state.data.map((item) => (
       <div className="masters__row" key={item.id}>
         <div>{item.id}</div>
         <div>{item.login}</div>

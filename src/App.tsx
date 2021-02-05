@@ -29,10 +29,10 @@ export const App = () => {
         <Redirect to="/specializations" />
       </Route>
       <Route exact path="/specializations">
-        <Specialization specs={specializations} />
+        <Specialization state={specializations} />
       </Route>
       <Route exact path="/masters">
-        <Master masters={masters} />
+        <Master state={masters} />
       </Route>
     </div>
   );

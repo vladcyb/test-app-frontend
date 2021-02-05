@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import API from '../../api';
 import actions from './actions';
+import { SpecializationType } from '../../shared/types';
 
 export const SpecializationThunk = {
   update: createAsyncThunk(
@@ -8,6 +9,13 @@ export const SpecializationThunk = {
     async (arg, { dispatch }) => {
       const result = await API.Specialization.get();
       dispatch(actions.set(result.data.result));
+    },
+  ),
+  add: createAsyncThunk(
+    'specialization/add',
+    async (props: SpecializationType, { dispatch }) => {
+      const result = await API.Specialization.add(props);
+      dispatch(actions.add(result.data.result));
     },
   ),
 };
