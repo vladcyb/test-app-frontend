@@ -1,3 +1,17 @@
-.specialization {
+.specialization__table {
+    margin-top: 20px;
+}
 
+.specialization__tableHeader {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.specialization__tableHeader div {
+    font-weight: bold;
+}
+
+.specialization__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }

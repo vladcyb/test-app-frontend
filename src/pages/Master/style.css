@@ -1,0 +1,17 @@
+.masters__table {
+    margin-top: 20px;
+}
+
+.masters__tableHeader {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.masters__tableHeader div {
+    font-weight: bold;
+}
+
+.masters__row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
