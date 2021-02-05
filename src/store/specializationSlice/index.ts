@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SpecializationType } from '../../shared/types';
 import { StateType } from './types';
+import { MasterThunk } from '../masterSlice/thunk';
 
 const initialState: StateType = {
   loading: false,
@@ -29,5 +30,17 @@ export const specializationSlice = createSlice({
         state.data[index] = payload;
       }
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(MasterThunk.update.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(MasterThunk.update.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(MasterThunk.update.rejected, (state) => {
+        state.loading = false;
+      });
   },
 });
