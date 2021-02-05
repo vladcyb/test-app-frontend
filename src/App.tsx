@@ -8,6 +8,7 @@ import { MasterThunk } from './store/masterSlice/thunk';
 import './app.css';
 
 export const App = () => {
+  /* hooks */
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(SpecializationThunk.update());

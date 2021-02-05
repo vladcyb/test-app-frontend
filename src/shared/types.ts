@@ -1,9 +1,9 @@
-export type Specialization = {
+export type SpecializationType = {
   id?: number
   title: string
 };
 
-export type Master = {
+export type MasterType = {
   id?: number
   login: string
   surname: string

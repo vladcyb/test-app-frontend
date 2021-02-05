@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateType } from './types';
-import { Master } from '../../shared/types';
+import { MasterType } from '../../shared/types';
 
 const initialState: StateType = {
   loading: false,
@@ -11,7 +11,7 @@ export const masterSlice = createSlice({
   name: 'master',
   initialState,
   reducers: {
-    add: (state, { payload }: PayloadAction<Required<Master>>) => {
+    add: (state, { payload }: PayloadAction<Required<MasterType>>) => {
       state.data.push(payload);
     },
     delete: (state, { payload }: PayloadAction<number>) => {
@@ -20,10 +20,10 @@ export const masterSlice = createSlice({
         state.data.splice(index, 1);
       }
     },
-    set: (state, { payload }: PayloadAction<Required<Master>[]>) => {
+    set: (state, { payload }: PayloadAction<Required<MasterType>[]>) => {
       state.data = payload;
     },
-    edit: (state, { payload }: PayloadAction<Required<Master>>) => {
+    edit: (state, { payload }: PayloadAction<Required<MasterType>>) => {
       const index = state.data.findIndex((spec) => spec.id === payload.id);
       if (index >= 0) {
         state.data[index] = payload;

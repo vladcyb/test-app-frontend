@@ -1,6 +1,6 @@
-import { Master } from '../../shared/types';
+import { MasterType } from '../../shared/types';
 
 export type StateType = {
   loading: boolean
-  data: Required<Master>[]
+  data: Required<MasterType>[]
 };

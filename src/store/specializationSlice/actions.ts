@@ -1,13 +1,13 @@
 import { createAction } from '@reduxjs/toolkit';
-import { Specialization } from '../../shared/types';
+import { SpecializationType } from '../../shared/types';
 
 const prefix = 'specialization';
 
 const actions = {
-  add: createAction<Required<Specialization>>(`${prefix}/add`),
+  add: createAction<Required<SpecializationType>>(`${prefix}/add`),
   delete: createAction<number>(`${prefix}/delete`),
-  edit: createAction<Partial<Specialization>>(`${prefix}/edit`),
-  set: createAction<Required<Specialization>[]>(`${prefix}/set`),
+  edit: createAction<Partial<SpecializationType>>(`${prefix}/edit`),
+  set: createAction<Required<SpecializationType>[]>(`${prefix}/set`),
 };
 
 export default actions;

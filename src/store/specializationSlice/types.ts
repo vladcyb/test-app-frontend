@@ -1,6 +1,6 @@
-import { Specialization } from '../../shared/types';
+import { SpecializationType } from '../../shared/types';
 
 export type StateType = {
   loading: boolean
-  data: Required<Specialization>[]
+  data: Required<SpecializationType>[]
 };
