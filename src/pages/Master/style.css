@@ -12,3 +12,14 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
 }
+
+.masters__remove {
+    background-image: url("../../shared/img/remove.png");
+    background-color: transparent;
+    background-size: contain;
+    background-position: center;
+    border: none;
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+}

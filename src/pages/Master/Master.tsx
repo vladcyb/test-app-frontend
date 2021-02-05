@@ -1,5 +1,6 @@
 import React from 'react';
 import { StateType } from '../../store/masterSlice/types';
+import { MasterRow } from './__row';
 import './style.css';
 
 type PropsType = {
@@ -17,14 +18,7 @@ export const Master = ({ state }: PropsType) => (
       <div>specialization</div>
     </div>
     {state.data.map((item) => (
-      <div className="masters__row" key={item.id}>
-        <div>{item.id}</div>
-        <div>{item.login}</div>
-        <div>{item.surname}</div>
-        <div>{item.name}</div>
-        <div>{item.patronymic}</div>
-        <div>{item.Specialization.title}</div>
-      </div>
+      <MasterRow key={item.id} data={item} />
     ))}
   </div>
 );
