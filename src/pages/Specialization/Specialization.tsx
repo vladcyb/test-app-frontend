@@ -1,17 +1,19 @@
 import React from 'react';
-import { SpecializationType } from '../../shared/types';
+import { StateType } from '../../store/specializationSlice/types';
 import './style.css';
 
 type PropsType = {
-  list: SpecializationType[]
+  specs: StateType
 };
 
-export const Specialization = ({
-  list,
-}: PropsType) => (
+export const Specialization = ({ specs }: PropsType) => (
   <div className="specialization">
     <div className="specialization__table">
-      {list.map((item) => item.title)}
+      {specs.data.map((item) => (
+        <div key={item.id}>
+          {item.title}
+        </div>
+      ))}
     </div>
   </div>
 );

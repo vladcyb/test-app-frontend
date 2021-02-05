@@ -8,6 +8,7 @@ import { SpecializationThunk } from './store/specializationSlice/thunk';
 import { MasterThunk } from './store/masterSlice/thunk';
 import { getSpecialization } from './store/specializationSlice/selectors';
 import './app.css';
+import { getMaster } from './store/masterSlice/selectors';
 
 export const App = () => {
   /* hooks */
@@ -18,7 +19,7 @@ export const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // const masters = useSelector(getMaster);
+  const masters = useSelector(getMaster);
   const specializations = useSelector(getSpecialization);
 
   return (
@@ -28,10 +29,10 @@ export const App = () => {
         <Redirect to="/specializations" />
       </Route>
       <Route exact path="/specializations">
-        <Specialization list={specializations.data} />
+        <Specialization specs={specializations} />
       </Route>
       <Route exact path="/masters">
-        <Master />
+        <Master masters={masters} />
       </Route>
     </div>
   );
