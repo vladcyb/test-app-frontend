@@ -1,9 +1,10 @@
 import React from 'react';
 import { StateType } from '../../store/specializationSlice/types';
-import './style.css';
 import { useField } from '../../shared/hooks/useField';
 import { useAppDispatch } from '../../store/store';
 import { SpecializationThunk } from '../../store/specializationSlice/thunk';
+import './style.css';
+import { SpecializationRow } from './__row';
 
 type PropsType = {
   state: StateType
@@ -31,13 +32,10 @@ export const Specialization = ({ state }: PropsType) => {
     <div className="specialization">
       <div className="specialization__tableHeader">
         <div>id</div>
-        <div>login</div>
+        <div>title</div>
       </div>
       {state.data.map((item) => (
-        <div className="specialization__row" key={item.id}>
-          <div>{item.id}</div>
-          <div>{item.title}</div>
-        </div>
+        <SpecializationRow key={item.id} id={item.id} title={item.title} />
       ))}
       <form onSubmit={handleSubmit}>
         <div className="specialization__addRow">
