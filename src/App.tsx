@@ -2,20 +2,19 @@ import React, { useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { Masters, Specializations } from './pages';
 import { Navigation } from './components/Navigation';
+import { useAppDispatch } from './store/store';
+import { SpecializationThunk } from './store/specializationSlice/thunk';
+import { MasterThunk } from './store/masterSlice/thunk';
 import './app.css';
-import API from './api';
 
 export const App = () => {
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    const getData = async () => {
-      const [specs, masters] = await Promise.all([
-        API.Specialization.get(),
-        API.Master.get(),
-      ]);
-      console.log(specs.data, masters.data);
-    };
-    getData();
+    dispatch(SpecializationThunk.update());
+    dispatch(MasterThunk.update());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <div className="app">
       <Navigation />

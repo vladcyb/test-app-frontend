@@ -9,5 +9,8 @@ export type Master = {
   surname: string
   name: string
   patronymic: string
-  specialization: string
+  Specialization: {
+    id: number
+    title: string
+  }
 };
