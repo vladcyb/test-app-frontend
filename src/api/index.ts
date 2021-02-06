@@ -1,6 +1,6 @@
 import Responses from './methods/responses';
 import instance from './axios';
-import { MasterType, SpecializationType } from '../shared/types';
+import { AddMasterType, MasterType, SpecializationType } from '../shared/types';
 
 const API = {
   Specialization: {
@@ -23,13 +23,13 @@ const API = {
     ),
   },
   Master: {
-    add: (props: MasterType) => Responses(
+    add: (props: AddMasterType) => Responses(
       instance.post('/master', props),
     ),
     get: () => Responses(
       instance.get('/master'),
     ),
-    edit: (props: Partial<MasterType>) => Responses(
+    edit: (props: Partial<MasterType>) => Responses( // TODO
       instance.put('/master', props),
     ),
     delete: (id: number) => Responses(

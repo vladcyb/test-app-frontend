@@ -8,7 +8,8 @@
     font-weight: bold;
 }
 
-.masters__row {
+.masters__row,
+.masters__addRow {
     display: grid;
     grid-template-columns: 44px repeat(6, 1fr);
 }

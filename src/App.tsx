@@ -7,8 +7,8 @@ import { useAppDispatch } from './store/store';
 import { SpecializationThunk } from './store/specializationSlice/thunk';
 import { MasterThunk } from './store/masterSlice/thunk';
 import { getSpecialization } from './store/specializationSlice/selectors';
-import './app.css';
 import { getMaster } from './store/masterSlice/selectors';
+import './app.css';
 
 export const App = () => {
   /* hooks */
@@ -32,7 +32,7 @@ export const App = () => {
         <Specialization state={specializations} />
       </Route>
       <Route exact path="/masters">
-        <Master state={masters} />
+        <Master masterState={masters} specializationState={specializations} />
       </Route>
     </div>
   );

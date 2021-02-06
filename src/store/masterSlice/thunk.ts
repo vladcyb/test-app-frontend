@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import API from '../../api';
 import actions from './actions';
+import { AddMasterType } from '../../shared/types';
 
 export const MasterThunk = {
   update: createAsyncThunk(
@@ -16,6 +17,15 @@ export const MasterThunk = {
       const result = await API.Master.delete(id);
       if (result.data.ok) {
         dispatch(actions.delete(id));
+      }
+    },
+  ),
+  add: createAsyncThunk(
+    'master/add',
+    async (props: AddMasterType, { dispatch }) => {
+      const result = await API.Master.add(props);
+      if (result.data.ok) {
+        dispatch(actions.add(result.data.result));
       }
     },
   ),

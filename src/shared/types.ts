@@ -14,3 +14,11 @@ export type MasterType = {
     title: string
   }
 };
+
+export type AddMasterType = {
+  login: string
+  surname: string
+  name: string
+  patronymic: string
+  specId: number
+};
