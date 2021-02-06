@@ -31,6 +31,8 @@ export const MasterRow = ({
       <div>
         {/* eslint-disable-next-line */}
         <button className="masters__remove" onClick={handleDelete} type="button" />
+      </div>
+      <div>
         {id}
       </div>
       <div>{login}</div>

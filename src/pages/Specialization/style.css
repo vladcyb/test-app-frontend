@@ -1,7 +1,7 @@
 .specialization__tableHeader {
     padding: 20px 0;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 44px 1fr 1fr;
 }
 
 .specialization__tableHeader div {
@@ -10,12 +10,12 @@
 
 .specialization__row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 44px 1fr 1fr;
 }
 
 .specialization__addRow {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 44px 1fr 1fr;
 }
 
 .specialization__remove {

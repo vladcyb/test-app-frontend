@@ -3,8 +3,8 @@ import { StateType } from '../../store/specializationSlice/types';
 import { useField } from '../../shared/hooks/useField';
 import { useAppDispatch } from '../../store/store';
 import { SpecializationThunk } from '../../store/specializationSlice/thunk';
-import './style.css';
 import { SpecializationRow } from './__row';
+import './style.css';
 
 type PropsType = {
   state: StateType
@@ -31,6 +31,7 @@ export const Specialization = ({ state }: PropsType) => {
   return (
     <div className="specialization">
       <div className="specialization__tableHeader">
+        <div />
         <div>id</div>
         <div>title</div>
       </div>
@@ -39,6 +40,7 @@ export const Specialization = ({ state }: PropsType) => {
       ))}
       <form onSubmit={handleSubmit}>
         <div className="specialization__addRow">
+          <div />
           <div />
           <div>
             <input type="text" {...titleField.props} disabled={isLoading} />

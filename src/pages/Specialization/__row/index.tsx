@@ -15,14 +15,16 @@ export const SpecializationRow = ({ id, title }: Required<SpecializationType>) =
 
   return (
     <div className="specialization__row" key={id}>
-      <div>{id}</div>
+      {/* eslint-disable-next-line */}
+      <button
+        className="specialization__remove"
+        type="button"
+        onClick={handleDelete}
+      />
       <div>
-        {/* eslint-disable-next-line */}
-        <button
-          className="specialization__remove"
-          type="button"
-          onClick={handleDelete}
-        />
+        {id}
+      </div>
+      <div>
         {title}
       </div>
     </div>

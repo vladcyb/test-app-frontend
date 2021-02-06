@@ -1,7 +1,7 @@
 .masters__tableHeader {
     display: grid;
     padding: 20px 0;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: 44px repeat(6, 1fr);
 }
 
 .masters__tableHeader div {
@@ -10,7 +10,7 @@
 
 .masters__row {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: 44px repeat(6, 1fr);
 }
 
 .masters__remove {

@@ -10,6 +10,7 @@ type PropsType = {
 export const Master = ({ state }: PropsType) => (
   <div className="masters">
     <div className="masters__tableHeader">
+      <div />
       <div>id</div>
       <div>login</div>
       <div>name</div>
