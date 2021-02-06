@@ -22,11 +22,14 @@ export const MasterThunk = {
   ),
   add: createAsyncThunk(
     'master/add',
-    async (props: AddMasterType, { dispatch }) => {
+    async (props: AddMasterType, { dispatch, rejectWithValue }) => {
       const result = await API.Master.add(props);
       if (result.data.ok) {
         dispatch(actions.add(result.data.result));
+      } else {
+        return rejectWithValue(result.data);
       }
+      return '';
     },
   ),
 };

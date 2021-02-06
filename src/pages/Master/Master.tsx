@@ -32,24 +32,26 @@ export const Master = ({
   const isFormDisabled = isLoading || specializationId === -1;
 
   /* methods */
-  const handleAdd = (e: React.FormEvent) => {
+  const handleAdd = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isFormDisabled) {
       return;
     }
     const obj: AddMasterType = {
-      login: login.props.value,
-      name: name.props.value,
-      surname: surname.props.value,
-      patronymic: patronymic.props.value,
+      login: login.props.value.trim(),
+      name: name.props.value.trim(),
+      surname: surname.props.value.trim(),
+      patronymic: patronymic.props.value.trim(),
       specId: specializationId,
     };
-    login.clear();
-    name.clear();
-    surname.clear();
-    patronymic.clear();
-    setSpecializationId(-1);
-    dispatch(MasterThunk.add(obj));
+    const actionResult = await dispatch(MasterThunk.add(obj));
+    if (!(actionResult as any).error) {
+      login.clear();
+      name.clear();
+      surname.clear();
+      patronymic.clear();
+      setSpecializationId(-1);
+    }
   };
 
   const handleSelectChange = (e: any) => {
