@@ -29,6 +29,10 @@ export const SpecializationRow = ({ id, title, specializationState }: PropsType)
     setIsEditing(true);
   };
 
+  const cancelEdit = () => {
+    setIsEditing(false);
+  };
+
   const handleEdit = async () => {
     if (isLoading) {
       return;
@@ -61,7 +65,17 @@ export const SpecializationRow = ({ id, title, specializationState }: PropsType)
       {isEditing ? (
         <div>
           <input type="text" {...titleField.props} />
-          <button type="button" onClick={handleEdit} disabled={isLoading}>Save</button>
+          <button
+            className="specialization__save"
+            type="button"
+            onClick={handleEdit}
+            disabled={isLoading}
+          >
+            Save
+          </button>
+          <button className="specialization__cancel" type="button" onClick={cancelEdit}>
+            Cancel
+          </button>
         </div>
       ) : (
         <div>

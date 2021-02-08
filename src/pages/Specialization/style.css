@@ -43,6 +43,9 @@
     margin-right: 5px;
 }
 
-.specialization__add {
+.specialization__add,
+.specialization__save,
+.specialization__cancel {
   margin-left: 5px;
 }
+
