@@ -8,6 +8,11 @@
     font-weight: bold;
 }
 
+.masters__row {
+    align-content: center;
+    height: 30px;
+}
+
 .masters__row,
 .masters__addRow {
     display: grid;
@@ -15,7 +20,7 @@
 }
 
 .masters__remove {
-    background-image: url("../../shared/img/remove.png");
+    background-image: url("../../shared/img/remove.svg");
     background-color: transparent;
     background-size: contain;
     background-position: center;

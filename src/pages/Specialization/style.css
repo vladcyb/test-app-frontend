@@ -9,7 +9,9 @@
 }
 
 .specialization__row {
+    height: 30px;
     display: grid;
+    align-content: center;
     grid-template-columns: 44px 1fr 1fr;
 }
 
@@ -19,7 +21,7 @@
 }
 
 .specialization__remove {
-    background-image: url("../../shared/img/remove.png");
+    background-image: url("../../shared/img/remove.svg");
     background-color: transparent;
     background-size: contain;
     background-position: center;
