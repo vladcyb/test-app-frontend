@@ -20,11 +20,14 @@ export const SpecializationThunk = {
   ),
   delete: createAsyncThunk(
     'specialization/delete',
-    async (id: number, { dispatch }) => {
-      const result = await API.Specialization.delete(id);
-      if (result.data.ok) {
-        dispatch(actions.delete(id));
+    async (id: number, { dispatch, rejectWithValue }) => {
+      const apiResult = await API.Specialization.delete(id);
+      const { ok, error } = apiResult.data;
+      if (ok) {
+        const res = await dispatch(actions.delete(id));
+        return res;
       }
+      return rejectWithValue({ error });
     },
   ),
   edit: createAsyncThunk(

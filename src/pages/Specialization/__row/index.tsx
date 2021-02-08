@@ -22,7 +22,10 @@ export const SpecializationRow = ({ id, title, specializationState }: PropsType)
 
   /* methods */
   const handleDelete = async () => {
-    dispatch(SpecializationThunk.delete(id));
+    const result = await dispatch(SpecializationThunk.delete(id));
+    if ((result.payload as any).error) {
+      alert((result.payload as any).error);
+    }
   };
 
   const handleEditClick = () => {
