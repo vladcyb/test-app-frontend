@@ -1,37 +1,37 @@
-.masters__tableHeader {
+.master__tableHeader {
     display: grid;
     padding: 20px 0;
     grid-template-columns: 60px repeat(6, 1fr);
 }
 
-.masters__tableHeader div {
+.master__tableHeader div {
     font-weight: bold;
 }
 
-.masters__row {
+.master__row {
     align-content: center;
     height: 50px;
     border-bottom: 1px solid #777777;
 }
 
-.masters__row,
-.masters__addRow {
+.master__row,
+.master__addRow {
     display: grid;
     grid-template-columns: 60px repeat(6, 1fr);
 }
 
-.masters__row_editing {
+.master__row_editing {
     height: 60px;
 }
 
-.masters__actions {
+.master__actions {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     flex-shrink: unset;
 }
 
-.masters__remove {
+.master__remove {
     background-image: url("../../shared/img/remove.svg");
     background-color: transparent;
     background-size: contain;
@@ -42,7 +42,7 @@
     height: 24px;
 }
 
-.masters__edit {
+.master__edit {
     background-image: url("../../shared/img/edit.svg");
     background-color: transparent;
     background-size: contain;
@@ -54,12 +54,12 @@
     margin-right: 5px;
 }
 
-.masters__cancelEdit {
+.master__cancelEdit {
     grid-column: 6 / span 1;
     height: 30px;
 }
 
-.masters__save {
+.master__save {
     grid-column: 7 / span 1;
     height: 30px;
 }

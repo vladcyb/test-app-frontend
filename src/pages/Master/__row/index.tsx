@@ -73,12 +73,12 @@ export const MasterRow = ({
   };
 
   return (
-    <div className={`masters__row ${isEditing ? 'masters__row_editing' : ''}`} key={id}>
-      <div className="masters__actions">
+    <div className={`master__row ${isEditing ? 'master__row_editing' : ''}`} key={id}>
+      <div className="master__actions">
         {/* eslint-disable-next-line */}
-        <button className="masters__edit" onClick={handleStartEditing} type="button" />
+        <button className="master__edit" onClick={handleStartEditing} type="button" />
         {/* eslint-disable-next-line */}
-        <button className="masters__remove" onClick={handleDelete} type="button" />
+        <button className="master__remove" onClick={handleDelete} type="button" />
       </div>
       <div>
         {id}
@@ -95,7 +95,7 @@ export const MasterRow = ({
             ))}
           </select>
           <button
-            className="masters__cancelEdit"
+            className="master__cancelEdit"
             type="button"
             onClick={cancelEdit}
             disabled={isLoading}
@@ -103,7 +103,7 @@ export const MasterRow = ({
             Cancel
           </button>
           <button
-            className="masters__save"
+            className="master__save"
             type="submit"
             onClick={handleEdit}
             disabled={isLoading}

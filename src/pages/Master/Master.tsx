@@ -59,8 +59,8 @@ export const Master = ({
   };
 
   return (
-    <div className="masters">
-      <div className="masters__tableHeader">
+    <div className="master">
+      <div className="master__tableHeader">
         <div />
         <div>id</div>
         <div>login</div>
@@ -72,7 +72,7 @@ export const Master = ({
       {masterState.data.map((item) => (
         <MasterRow key={item.id} data={item} specializationState={specializationState} />
       ))}
-      <form className="masters__addRow" onSubmit={handleAdd}>
+      <form className="master__addRow" onSubmit={handleAdd}>
         <div />
         <div />
         <input type="text" {...login.props} />
