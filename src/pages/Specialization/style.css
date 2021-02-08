@@ -8,6 +8,10 @@
     font-weight: bold;
 }
 
+.specialization__headerId {
+    grid-column-start: 2;
+}
+
 .specialization__row {
     height: 50px;
     display: grid;
@@ -46,6 +50,6 @@
 .specialization__add,
 .specialization__save,
 .specialization__cancel {
-  margin-left: 5px;
+    margin-left: 5px;
 }
 

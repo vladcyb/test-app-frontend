@@ -67,3 +67,15 @@
     grid-column: 7 / span 1;
     height: 30px;
 }
+
+.master__headerId {
+    grid-column-start: 2;
+}
+
+.master__addRowLogin {
+    grid-column-start: 3;
+}
+
+.master__addBtn {
+    grid-column-start: 7;
+}

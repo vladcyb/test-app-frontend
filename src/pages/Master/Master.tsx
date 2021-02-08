@@ -61,8 +61,7 @@ export const Master = ({
   return (
     <div className="master">
       <div className="master__tableHeader">
-        <div />
-        <div>id</div>
+        <div className="master__headerId">id</div>
         <div>login</div>
         <div>name</div>
         <div>surname</div>
@@ -78,9 +77,7 @@ export const Master = ({
         />
       ))}
       <form className="master__addRow" onSubmit={handleAdd}>
-        <div />
-        <div />
-        <input type="text" {...login.props} />
+        <input className="master__addRowLogin" type="text" {...login.props} />
         <input type="text" {...name.props} />
         <input type="text" {...surname.props} />
         <input type="text" {...patronymic.props} />
@@ -92,13 +89,7 @@ export const Master = ({
             </option>
           ))}
         </select>
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <button type="submit" disabled={isFormDisabled}>Add</button>
+        <button className="master__addBtn" type="submit" disabled={isFormDisabled}>Add</button>
       </form>
     </div>
   );

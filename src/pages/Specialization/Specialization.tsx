@@ -31,9 +31,8 @@ export const Specialization = ({ state }: PropsType) => {
   return (
     <div className="specialization">
       <div className="specialization__tableHeader">
-        <div />
-        <div>id</div>
-        <div>title</div>
+        <div className="specialization__headerId">id</div>
+        <div className="specialization__headerTitle">title</div>
       </div>
       {state.data.map((item) => (
         <SpecializationRow
