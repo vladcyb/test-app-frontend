@@ -33,7 +33,7 @@ export const MasterThunk = {
       } else {
         return rejectWithValue(result.data);
       }
-      return '';
+      return result.data;
     },
   ),
   edit: createAsyncThunk(

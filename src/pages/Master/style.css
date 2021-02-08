@@ -20,6 +20,11 @@
     grid-template-columns: 60px repeat(6, 1fr);
 }
 
+.master__addRow {
+    margin-top: 20px;
+    row-gap: 5px;
+}
+
 .master__row_editing {
     height: 60px;
 }

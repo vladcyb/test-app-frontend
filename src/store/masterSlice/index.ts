@@ -42,6 +42,15 @@ export const masterSlice = createSlice({
       .addCase(MasterThunk.update.rejected, (state) => {
         state.loading = false;
       })
+      .addCase(MasterThunk.add.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(MasterThunk.add.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(MasterThunk.add.rejected, (state) => {
+        state.loading = false;
+      })
       .addCase(MasterThunk.edit.pending, (state) => {
         state.loading = true;
       })

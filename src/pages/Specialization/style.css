@@ -19,6 +19,7 @@
 .specialization__addRow {
     display: grid;
     grid-template-columns: 60px 1fr 1fr;
+    margin-top: 20px;
 }
 
 .specialization__actions {
@@ -40,4 +41,8 @@
     width: 24px;
     height: 24px;
     margin-right: 5px;
+}
+
+.specialization__add {
+  margin-left: 5px;
 }

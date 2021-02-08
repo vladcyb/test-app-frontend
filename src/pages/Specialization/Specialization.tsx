@@ -49,7 +49,7 @@ export const Specialization = ({ state }: PropsType) => {
           <div />
           <div>
             <input type="text" {...titleField.props} disabled={isLoading} />
-            <button type="submit" disabled={isLoading}>
+            <button className="specialization__add" type="submit" disabled={isLoading}>
               Add
             </button>
           </div>
