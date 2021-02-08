@@ -50,6 +50,15 @@ export const specializationSlice = createSlice({
       })
       .addCase(SpecializationThunk.add.rejected, (state) => {
         state.loading = false;
+      })
+      .addCase(SpecializationThunk.edit.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(SpecializationThunk.edit.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(SpecializationThunk.edit.rejected, (state) => {
+        state.loading = false;
       });
   },
 });

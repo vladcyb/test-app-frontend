@@ -44,7 +44,7 @@ export const MasterThunk = {
       if (ok) {
         await dispatch(actions.edit(result));
       } else {
-        return rejectWithValue({ error: 'Something went wrong' });
+        return rejectWithValue({ error: 'Something went wrong!' });
       }
       return result;
     },

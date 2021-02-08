@@ -70,7 +70,12 @@ export const Master = ({
         <div>specialization</div>
       </div>
       {masterState.data.map((item) => (
-        <MasterRow key={item.id} data={item} specializationState={specializationState} />
+        <MasterRow
+          key={item.id}
+          data={item}
+          specializationState={specializationState}
+          masterState={masterState}
+        />
       ))}
       <form className="master__addRow" onSubmit={handleAdd}>
         <div />

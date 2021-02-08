@@ -27,4 +27,17 @@ export const SpecializationThunk = {
       }
     },
   ),
+  edit: createAsyncThunk(
+    'specialization/edit',
+    async (specialization: SpecializationType, { dispatch, rejectWithValue }) => {
+      const editResult = await API.Specialization.edit(specialization);
+      const { ok, result } = editResult.data;
+      if (ok) {
+        await dispatch(actions.edit(result));
+      } else {
+        return rejectWithValue({ error: 'Something went wrong!' });
+      }
+      return result;
+    },
+  ),
 };

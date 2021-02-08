@@ -36,7 +36,12 @@ export const Specialization = ({ state }: PropsType) => {
         <div>title</div>
       </div>
       {state.data.map((item) => (
-        <SpecializationRow key={item.id} id={item.id} title={item.title} />
+        <SpecializationRow
+          key={item.id}
+          id={item.id}
+          title={item.title}
+          specializationState={state}
+        />
       ))}
       <form onSubmit={handleSubmit}>
         <div className="specialization__addRow">

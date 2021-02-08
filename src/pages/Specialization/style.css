@@ -1,7 +1,7 @@
 .specialization__tableHeader {
     padding: 20px 0;
     display: grid;
-    grid-template-columns: 44px 1fr 1fr;
+    grid-template-columns: 60px 1fr 1fr;
 }
 
 .specialization__tableHeader div {
@@ -9,24 +9,35 @@
 }
 
 .specialization__row {
-    height: 30px;
+    height: 50px;
     display: grid;
     align-content: center;
-    grid-template-columns: 44px 1fr 1fr;
+    border-bottom: 1px solid #777777;
+    grid-template-columns: 60px 1fr 1fr;
 }
 
 .specialization__addRow {
     display: grid;
-    grid-template-columns: 44px 1fr 1fr;
+    grid-template-columns: 60px 1fr 1fr;
+}
+
+.specialization__actions {
+    display: flex;
+    justify-content: flex-start;
+    flex-shrink: unset;
 }
 
 .specialization__remove {
-    background-image: url("../../shared/img/remove.svg");
-    background-color: transparent;
-    background-size: contain;
-    background-position: center;
+    background: url("../../shared/img/remove.svg") transparent center / contain no-repeat;
     border: none;
     width: 24px;
     height: 24px;
-    margin-right: 20px;
+}
+
+.specialization__edit {
+    background: url("../../shared/img/edit.svg") transparent center / contain no-repeat;
+    border: none;
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
 }

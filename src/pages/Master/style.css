@@ -26,7 +26,6 @@
 
 .master__actions {
     display: flex;
-    flex-direction: row;
     justify-content: flex-start;
     flex-shrink: unset;
 }

@@ -1,32 +1,73 @@
-import React, { useCallback } from 'react';
+import React, { useState } from 'react';
 import { SpecializationType } from '../../../shared/types';
 import { useAppDispatch } from '../../../store/store';
 import { SpecializationThunk } from '../../../store/specializationSlice/thunk';
+import { useField } from '../../../shared/hooks/useField';
+import { StateType } from '../../../store/specializationSlice/types';
 
-export const SpecializationRow = ({ id, title }: Required<SpecializationType>) => {
+type PropsType = {
+  specializationState: StateType
+} & Required<SpecializationType>;
+
+export const SpecializationRow = ({ id, title, specializationState }: PropsType) => {
+  /* state */
+  const [isEditing, setIsEditing] = useState(false);
+  const titleField = useField(title);
+
   /* hooks */
   const dispatch = useAppDispatch();
 
+  /* vars */
+  const isLoading = specializationState.loading;
+
   /* methods */
-  const handleDelete = useCallback(async () => {
+  const handleDelete = async () => {
     dispatch(SpecializationThunk.delete(id));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleEdit = async () => {
+    if (isLoading) {
+      return;
+    }
+    const result = await dispatch(SpecializationThunk.edit({ id, title: titleField.props.value }));
+    if (!result.payload.error) {
+      setIsEditing(false);
+    }
+  };
 
   return (
     <div className="specialization__row" key={id}>
-      {/* eslint-disable-next-line */}
-      <button
-        className="specialization__remove"
-        type="button"
-        onClick={handleDelete}
-      />
+      <div className="specialization__actions">
+        {/* eslint-disable-next-line */}
+        <button
+          className="specialization__edit"
+          type="button"
+          onClick={handleEditClick}
+        />
+        {/* eslint-disable-next-line */}
+        <button
+          className="specialization__remove"
+          type="button"
+          onClick={handleDelete}
+        />
+      </div>
       <div>
         {id}
       </div>
-      <div>
-        {title}
-      </div>
+      {isEditing ? (
+        <div>
+          <input type="text" {...titleField.props} />
+          <button type="button" onClick={handleEdit} disabled={isLoading}>Save</button>
+        </div>
+      ) : (
+        <div>
+          {title}
+        </div>
+      )}
     </div>
   );
 };

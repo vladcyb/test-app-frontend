@@ -11,7 +11,7 @@ const API = {
     get: () => Responses(
       instance.get('/specialization'),
     ),
-    edit: (props: Partial<SpecializationType>) => {
+    edit: (props: SpecializationType) => {
       if (!props.id) {
         throw Error('Enter master id!');
       }
