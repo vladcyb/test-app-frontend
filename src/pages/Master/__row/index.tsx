@@ -63,8 +63,10 @@ export const MasterRow = ({
       patronymic: patronymicField.props.value,
       specId,
     }));
-    console.log(editResult);
-    if (!editResult.payload.error) {
+    const { error } = editResult.payload;
+    if (error) {
+      alert(error);
+    } else {
       setIsEditing(false);
     }
   };

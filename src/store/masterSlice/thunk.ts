@@ -40,11 +40,11 @@ export const MasterThunk = {
     'master/edit',
     async (props: EditMaster, { dispatch, rejectWithValue }) => {
       const requestResult = await API.Master.edit(props);
-      const { ok, result } = requestResult.data;
+      const { ok, result, error } = requestResult.data;
       if (ok) {
         await dispatch(actions.edit(result));
       } else {
-        return rejectWithValue({ error: 'Something went wrong!' });
+        return rejectWithValue({ error });
       }
       return result;
     },
