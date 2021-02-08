@@ -45,7 +45,10 @@ export const Master = ({
       specId: specializationId,
     };
     const actionResult = await dispatch(MasterThunk.add(obj));
-    if (!actionResult.payload.error) {
+    const { error } = actionResult.payload;
+    if (error) {
+      alert(error);
+    } else {
       login.clear();
       name.clear();
       surname.clear();
