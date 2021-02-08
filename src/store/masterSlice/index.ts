@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateType } from './types';
 import { MasterType } from '../../shared/types';
 import { MasterThunk } from './thunk';
+import { SpecializationThunk } from '../specializationSlice/thunk';
 
 const initialState: StateType = {
   loading: false,
@@ -59,6 +60,13 @@ export const masterSlice = createSlice({
       })
       .addCase(MasterThunk.edit.rejected, (state) => {
         state.loading = false;
+      })
+      .addCase(SpecializationThunk.edit.fulfilled, (state, { payload }) => {
+        state.data.forEach((master) => {
+          if (master.Specialization.id === payload.id) {
+            master.Specialization.title = payload.title;
+          }
+        });
       });
   },
 });
