@@ -27,8 +27,8 @@ const API = {
     add: (props: AddMasterType) => Responses(
       instance.post('/master', props),
     ),
-    get: () => Responses(
-      instance.get('/master'),
+    get: (specId?: number) => Responses(
+      instance.get(specId ? `/master?specId=${specId}` : '/master'),
     ),
     edit: (props: EditMaster) => Responses(
       instance.put('/master', props),

@@ -79,3 +79,12 @@
 .master__addBtn {
     grid-column-start: 7;
 }
+
+.master__filter select,
+.master__filter button {
+    height: 30px;
+}
+
+.master__filter button {
+    margin-left: 5px;
+}

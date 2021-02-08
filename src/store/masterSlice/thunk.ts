@@ -7,8 +7,8 @@ import { EditMaster } from './types';
 export const MasterThunk = {
   update: createAsyncThunk(
     'master/update',
-    async (arg, { dispatch }) => {
-      const result = await API.Master.get();
+    async (specId: number | undefined, { dispatch }) => {
+      const result = await API.Master.get(specId);
       dispatch(actions.set(result.data.result));
     },
   ),

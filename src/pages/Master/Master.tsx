@@ -22,7 +22,10 @@ export const Master = ({
   const name = useField();
   const surname = useField();
   const patronymic = useField();
+
+  /* state */
   const [specializationId, setSpecializationId] = useState(-1);
+  const [filterSpecId, setFilterSpecId] = useState(0);
 
   /* hooks */
   const dispatch = useAppDispatch();
@@ -57,8 +60,16 @@ export const Master = ({
     }
   };
 
-  const handleSelectChange = (e: any) => {
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSpecializationId(parseInt(e.target.value, 10));
+  };
+
+  const handleChangeFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setFilterSpecId(parseInt(e.target.value, 10));
+  };
+
+  const handleApplyFilter = () => {
+    dispatch(MasterThunk.update(filterSpecId));
   };
 
   return (
@@ -94,6 +105,17 @@ export const Master = ({
         </select>
         <button className="master__addBtn" type="submit" disabled={isFormDisabled}>Add</button>
       </form>
+      <div className="master__filter">
+        <select onChange={handleChangeFilter} defaultValue={0}>
+          <option value={0}>(не выбрано)</option>
+          {specializationState.data.map((spec) => (
+            <option value={spec.id} key={spec.id}>{spec.title}</option>
+          ))}
+        </select>
+        <button type="button" onClick={handleApplyFilter}>
+          Отфильтровать
+        </button>
+      </div>
     </div>
   );
 };
