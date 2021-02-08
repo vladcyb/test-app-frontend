@@ -1,7 +1,7 @@
 .masters__tableHeader {
     display: grid;
     padding: 20px 0;
-    grid-template-columns: 44px repeat(6, 1fr);
+    grid-template-columns: 60px repeat(6, 1fr);
 }
 
 .masters__tableHeader div {
@@ -10,13 +10,25 @@
 
 .masters__row {
     align-content: center;
-    height: 30px;
+    height: 50px;
+    border-bottom: 1px solid #777777;
 }
 
 .masters__row,
 .masters__addRow {
     display: grid;
-    grid-template-columns: 44px repeat(6, 1fr);
+    grid-template-columns: 60px repeat(6, 1fr);
+}
+
+.masters__row_editing {
+    height: 60px;
+}
+
+.masters__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-shrink: unset;
 }
 
 .masters__remove {
@@ -24,8 +36,30 @@
     background-color: transparent;
     background-size: contain;
     background-position: center;
+    background-repeat: no-repeat;
     border: none;
     width: 24px;
     height: 24px;
-    margin-right: 20px;
+}
+
+.masters__edit {
+    background-image: url("../../shared/img/edit.svg");
+    background-color: transparent;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+
+.masters__cancelEdit {
+    grid-column: 6 / span 1;
+    height: 30px;
+}
+
+.masters__save {
+    grid-column: 7 / span 1;
+    height: 30px;
 }

@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import API from '../../api';
 import actions from './actions';
 import { AddMasterType } from '../../shared/types';
+import { EditMaster } from './types';
 
 export const MasterThunk = {
   update: createAsyncThunk(
@@ -12,7 +13,7 @@ export const MasterThunk = {
     },
   ),
   delete: createAsyncThunk(
-    'master/update',
+    'master/delete',
     async (id: number, { dispatch }) => {
       const result = await API.Master.delete(id);
       if (result.data.ok) {
@@ -22,7 +23,10 @@ export const MasterThunk = {
   ),
   add: createAsyncThunk(
     'master/add',
-    async (props: AddMasterType, { dispatch, rejectWithValue }) => {
+    async (props: AddMasterType, {
+      dispatch,
+      rejectWithValue,
+    }) => {
       const result = await API.Master.add(props);
       if (result.data.ok) {
         dispatch(actions.add(result.data.result));
@@ -30,6 +34,19 @@ export const MasterThunk = {
         return rejectWithValue(result.data);
       }
       return '';
+    },
+  ),
+  edit: createAsyncThunk(
+    'master/edit',
+    async (props: EditMaster, { dispatch, rejectWithValue }) => {
+      const requestResult = await API.Master.edit(props);
+      const { ok, result } = requestResult.data;
+      if (ok) {
+        await dispatch(actions.edit(result));
+      } else {
+        return rejectWithValue({ error: 'Something went wrong' });
+      }
+      return result;
     },
   ),
 };

@@ -1,6 +1,7 @@
 import Responses from './methods/responses';
 import instance from './axios';
-import { AddMasterType, MasterType, SpecializationType } from '../shared/types';
+import { AddMasterType, SpecializationType } from '../shared/types';
+import { EditMaster } from '../store/masterSlice/types';
 
 const API = {
   Specialization: {
@@ -29,7 +30,7 @@ const API = {
     get: () => Responses(
       instance.get('/master'),
     ),
-    edit: (props: Partial<MasterType>) => Responses( // TODO
+    edit: (props: EditMaster) => Responses(
       instance.put('/master', props),
     ),
     delete: (id: number) => Responses(
