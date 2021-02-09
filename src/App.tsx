@@ -15,7 +15,7 @@ export const App = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(SpecializationThunk.update());
-    dispatch(MasterThunk.update());
+    dispatch(MasterThunk.update({ offset: 0 }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

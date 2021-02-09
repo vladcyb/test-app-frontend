@@ -2,6 +2,7 @@ import Responses from './methods/responses';
 import instance from './axios';
 import { AddMasterType, SpecializationType } from '../shared/types';
 import { EditMaster } from '../store/masterSlice/types';
+import { IGetMaster } from './interfaces';
 
 const API = {
   Specialization: {
@@ -27,9 +28,13 @@ const API = {
     add: (props: AddMasterType) => Responses(
       instance.post('/master', props),
     ),
-    get: (specId?: number) => Responses(
-      instance.get(specId ? `/master?specId=${specId}` : '/master'),
-    ),
+    get: (props: IGetMaster) => {
+      const { offset, specId } = props;
+      return Responses(
+        instance.get(specId ? `/master?specId=${specId}&offset=${offset}`
+          : `/master?offset=${offset}`),
+      );
+    },
     edit: (props: EditMaster) => Responses(
       instance.put('/master', props),
     ),

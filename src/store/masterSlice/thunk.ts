@@ -3,12 +3,13 @@ import API from '../../api';
 import actions from './actions';
 import { AddMasterType } from '../../shared/types';
 import { EditMaster } from './types';
+import { IGetMaster } from '../../api/interfaces';
 
 export const MasterThunk = {
   update: createAsyncThunk(
     'master/update',
-    async (specId: number | undefined, { dispatch }) => {
-      const result = await API.Master.get(specId);
+    async (props: IGetMaster, { dispatch }) => {
+      const result = await API.Master.get(props);
       dispatch(actions.set(result.data.result));
     },
   ),

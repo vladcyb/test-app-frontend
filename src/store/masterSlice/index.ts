@@ -1,12 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { StateType } from './types';
+import { DataType, StateType } from './types';
 import { MasterType } from '../../shared/types';
 import { MasterThunk } from './thunk';
 import { SpecializationThunk } from '../specializationSlice/thunk';
 
 const initialState: StateType = {
   loading: false,
-  data: [],
+  data: {
+    count: 0,
+    rows: [],
+  },
+  filterBySpec: 0,
 };
 
 export const masterSlice = createSlice({
@@ -14,21 +18,21 @@ export const masterSlice = createSlice({
   initialState,
   reducers: {
     add: (state, { payload }: PayloadAction<Required<MasterType>>) => {
-      state.data.push(payload);
+      state.data.rows.push(payload);
     },
     delete: (state, { payload }: PayloadAction<number>) => {
-      const index = state.data.findIndex((master) => master.id === payload);
+      const index = state.data.rows.findIndex((master) => master.id === payload);
       if (index >= 0) {
-        state.data.splice(index, 1);
+        state.data.rows.splice(index, 1);
       }
     },
-    set: (state, { payload }: PayloadAction<Required<MasterType>[]>) => {
+    set: (state, { payload }: PayloadAction<DataType>) => {
       state.data = payload;
     },
     edit: (state, { payload }: PayloadAction<Required<MasterType>>) => {
-      const index = state.data.findIndex((spec) => spec.id === payload.id);
+      const index = state.data.rows.findIndex((spec) => spec.id === payload.id);
       if (index >= 0) {
-        state.data[index] = payload;
+        state.data.rows[index] = payload;
       }
     },
   },
@@ -48,6 +52,7 @@ export const masterSlice = createSlice({
       })
       .addCase(MasterThunk.add.fulfilled, (state) => {
         state.loading = false;
+        state.data.count += 1;
       })
       .addCase(MasterThunk.add.rejected, (state) => {
         state.loading = false;
@@ -62,7 +67,7 @@ export const masterSlice = createSlice({
         state.loading = false;
       })
       .addCase(SpecializationThunk.edit.fulfilled, (state, { payload }) => {
-        state.data.forEach((master) => {
+        state.data.rows.forEach((master) => {
           if (master.Specialization.id === payload.id) {
             master.Specialization.title = payload.title;
           }

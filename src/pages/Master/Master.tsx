@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StateType } from '../../store/masterSlice/types';
 import { StateType as SpecializationStateType } from '../../store/specializationSlice/types';
 import { MasterRow } from './__row';
@@ -26,12 +26,17 @@ export const Master = ({
   /* state */
   const [specializationId, setSpecializationId] = useState(-1);
   const [filterSpecId, setFilterSpecId] = useState(0);
+  const [offset, setOffset] = useState(0);
 
   /* hooks */
   const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(MasterThunk.update({ offset }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [offset]);
 
   /* vars */
-  const isLoading = masterState.loading;
+  const { loading: isLoading, data: { count } } = masterState;
   const isFormDisabled = isLoading || specializationId === -1;
 
   /* methods */
@@ -69,11 +74,21 @@ export const Master = ({
   };
 
   const handleApplyFilter = () => {
-    dispatch(MasterThunk.update(filterSpecId));
+    dispatch(MasterThunk.update({ specId: filterSpecId, offset }));
+  };
+
+  const handlePrevClick = () => {
+    setOffset((value) => value - 10);
+  };
+
+  const handleNextClick = () => {
+    setOffset((value) => value + 10);
   };
 
   return (
     <div className="master">
+      <button type="button" onClick={handlePrevClick} disabled={offset === 0}>previous</button>
+      <button type="button" onClick={handleNextClick} disabled={offset + 10 >= count}>next</button>
       <div className="master__tableHeader">
         <div className="master__headerId">id</div>
         <div>login</div>
@@ -82,7 +97,7 @@ export const Master = ({
         <div>patronymic</div>
         <div>specialization</div>
       </div>
-      {masterState.data.map((item) => (
+      {masterState.data.rows.map((item) => (
         <MasterRow
           key={item.id}
           data={item}

@@ -1,8 +1,14 @@
 import { MasterType } from '../../shared/types';
 
+export type DataType = {
+  count: number
+  rows: Required<MasterType>[]
+};
+
 export type StateType = {
   loading: boolean
-  data: Required<MasterType>[]
+  data: DataType
+  filterBySpec: number
 };
 
 export type EditMaster = {
