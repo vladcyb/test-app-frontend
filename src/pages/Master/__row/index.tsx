@@ -4,12 +4,11 @@ import { useAppDispatch } from '../../../store/store';
 import { MasterThunk } from '../../../store/masterSlice/thunk';
 import { useField } from '../../../shared/hooks/useField';
 import { StateType as SpecializationState } from '../../../store/specializationSlice/types';
-import { StateType as MasterState } from '../../../store/masterSlice/types';
 
 type PropsType = {
   data: Required<MasterType>
   specializationState: SpecializationState
-  masterState: MasterState
+  isLoading: boolean
 };
 
 export const MasterRow = ({
@@ -22,14 +21,13 @@ export const MasterRow = ({
     login,
   },
   specializationState,
-  masterState,
+  isLoading,
 }: PropsType) => {
   /* state */
   const [isEditing, setIsEditing] = useState(false);
 
   /* hooks */
   const dispatch = useAppDispatch();
-  const isLoading = masterState.loading;
 
   /* fields */
   const loginField = useField(login);

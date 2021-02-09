@@ -102,7 +102,7 @@ export const Master = ({
           key={item.id}
           data={item}
           specializationState={specializationState}
-          masterState={masterState}
+          isLoading={isLoading}
         />
       ))}
       <form className="master__addRow" onSubmit={handleAdd}>

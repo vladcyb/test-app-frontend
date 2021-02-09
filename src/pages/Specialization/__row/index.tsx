@@ -3,22 +3,18 @@ import { SpecializationType } from '../../../shared/types';
 import { useAppDispatch } from '../../../store/store';
 import { SpecializationThunk } from '../../../store/specializationSlice/thunk';
 import { useField } from '../../../shared/hooks/useField';
-import { StateType } from '../../../store/specializationSlice/types';
 
 type PropsType = {
-  specializationState: StateType
+  isLoading: boolean
 } & Required<SpecializationType>;
 
-export const SpecializationRow = ({ id, title, specializationState }: PropsType) => {
+export const SpecializationRow = ({ id, title, isLoading }: PropsType) => {
   /* state */
   const [isEditing, setIsEditing] = useState(false);
   const titleField = useField(title);
 
   /* hooks */
   const dispatch = useAppDispatch();
-
-  /* vars */
-  const isLoading = specializationState.loading;
 
   /* methods */
   const handleDelete = async () => {

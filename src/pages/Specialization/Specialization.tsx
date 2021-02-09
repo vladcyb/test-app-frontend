@@ -39,7 +39,7 @@ export const Specialization = ({ state }: PropsType) => {
           key={item.id}
           id={item.id}
           title={item.title}
-          specializationState={state}
+          isLoading={isLoading}
         />
       ))}
       <form onSubmit={handleSubmit}>
