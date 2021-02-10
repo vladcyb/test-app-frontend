@@ -9,6 +9,7 @@ export type StateType = {
   loading: boolean
   data: DataType
   filterBySpec: number
+  loaded: boolean
 };
 
 export type EditMaster = {

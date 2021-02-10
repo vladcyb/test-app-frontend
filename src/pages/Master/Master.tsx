@@ -43,8 +43,10 @@ export const Master = ({
   }, [offset]);
 
   /* vars */
-  const { loading: isLoading, data: { count } } = masterState;
+  const { loading: isLoading, data: { count }, loaded } = masterState;
   const isFormDisabled = isLoading || specializationId === -1;
+  const numberOfPages = Math.ceil(count / 10);
+  const currentPage = offset / 10 + 1;
 
   /* methods */
   const handleAdd = async (e: React.FormEvent) => {
@@ -99,6 +101,15 @@ export const Master = ({
 
   return (
     <div className="master">
+      <div style={{ visibility: loaded ? 'visible' : 'hidden' }}>
+        <b>
+          Page:
+          {' '}
+          {currentPage}
+          /
+          {numberOfPages}
+        </b>
+      </div>
       <div className="master__nav">
         <button type="button" onClick={handlePrevClick} disabled={offset === 0}>
           previous

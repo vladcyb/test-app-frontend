@@ -11,6 +11,7 @@ const initialState: StateType = {
     rows: [],
   },
   filterBySpec: 0,
+  loaded: false,
 };
 
 export const masterSlice = createSlice({
@@ -28,6 +29,7 @@ export const masterSlice = createSlice({
     },
     set: (state, { payload }: PayloadAction<DataType>) => {
       state.data = payload;
+      state.loaded = true;
     },
     edit: (state, { payload }: PayloadAction<Required<MasterType>>) => {
       const index = state.data.rows.findIndex((spec) => spec.id === payload.id);
