@@ -9,6 +9,10 @@ button {
   padding: 5px;
 }
 
+button:disabled {
+  cursor: default;
+}
+
 select {
   cursor: pointer;
 }

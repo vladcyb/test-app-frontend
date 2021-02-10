@@ -29,9 +29,9 @@ const API = {
       instance.post('/master', props),
     ),
     get: (props: IGetMaster) => {
-      const { offset, specId } = props;
+      const { offset, filterSpecId } = props;
       return Responses(
-        instance.get(specId ? `/master?specId=${specId}&offset=${offset}`
+        instance.get(filterSpecId ? `/master?specId=${filterSpecId}&offset=${offset}`
           : `/master?offset=${offset}`),
       );
     },

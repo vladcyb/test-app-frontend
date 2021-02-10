@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { StateType } from '../../store/masterSlice/types';
 import { StateType as SpecializationStateType } from '../../store/specializationSlice/types';
 import { MasterRow } from './__row';
@@ -25,13 +25,20 @@ export const Master = ({
 
   /* state */
   const [specializationId, setSpecializationId] = useState(-1);
-  const [filterSpecId, setFilterSpecId] = useState(0);
   const [offset, setOffset] = useState(0);
 
   /* hooks */
   const dispatch = useAppDispatch();
+  const filterRef = useRef<HTMLSelectElement>(null);
   useEffect(() => {
-    dispatch(MasterThunk.update({ offset }));
+    if (filterRef.current) {
+      dispatch(
+        MasterThunk.update({
+          offset,
+          filterSpecId: parseInt(filterRef.current.value, 10),
+        }),
+      );
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offset]);
 
@@ -69,12 +76,17 @@ export const Master = ({
     setSpecializationId(parseInt(e.target.value, 10));
   };
 
-  const handleChangeFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setFilterSpecId(parseInt(e.target.value, 10));
-  };
-
-  const handleApplyFilter = () => {
-    dispatch(MasterThunk.update({ specId: filterSpecId, offset }));
+  const handleApplyFilter = async () => {
+    if (filterRef.current) {
+      if (offset !== 0) {
+        setOffset(0);
+      } else {
+        dispatch(MasterThunk.update({
+          offset,
+          filterSpecId: parseInt(filterRef.current.value, 10),
+        }));
+      }
+    }
   };
 
   const handlePrevClick = () => {
@@ -121,7 +133,7 @@ export const Master = ({
         <button className="master__addBtn" type="submit" disabled={isFormDisabled}>Add</button>
       </form>
       <div className="master__filter">
-        <select onChange={handleChangeFilter} defaultValue={0}>
+        <select defaultValue={0} ref={filterRef}>
           <option value={0}>(не выбрано)</option>
           {specializationState.data.map((spec) => (
             <option value={spec.id} key={spec.id}>{spec.title}</option>
