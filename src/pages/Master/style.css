@@ -88,3 +88,11 @@
 .master__filter button {
     margin-left: 5px;
 }
+
+.master__nav {
+    margin-top: 10px;
+}
+
+.master__nav button:first-of-type {
+    margin-right: 5px;
+}

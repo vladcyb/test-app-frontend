@@ -99,8 +99,14 @@ export const Master = ({
 
   return (
     <div className="master">
-      <button type="button" onClick={handlePrevClick} disabled={offset === 0}>previous</button>
-      <button type="button" onClick={handleNextClick} disabled={offset + 10 >= count}>next</button>
+      <div className="master__nav">
+        <button type="button" onClick={handlePrevClick} disabled={offset === 0}>
+          previous
+        </button>
+        <button type="button" onClick={handleNextClick} disabled={offset + 10 >= count}>
+          next
+        </button>
+      </div>
       <div className="master__tableHeader">
         <div className="master__headerId">id</div>
         <div>login</div>
