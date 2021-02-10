@@ -91,13 +91,19 @@ export const Master = ({
     }
   };
 
-  const handlePrevClick = () => {
+  const openPrevPage = () => {
     setOffset((value) => value - 10);
   };
 
-  const handleNextClick = () => {
+  const openNextPage = () => {
     setOffset((value) => value + 10);
   };
+
+  useEffect(() => {
+    if (currentPage > numberOfPages && loaded) {
+      openPrevPage();
+    }
+  }, [numberOfPages, currentPage, loaded]);
 
   return (
     <div className="master">
@@ -111,10 +117,10 @@ export const Master = ({
         </b>
       </div>
       <div className="master__nav">
-        <button type="button" onClick={handlePrevClick} disabled={offset === 0}>
+        <button type="button" onClick={openPrevPage} disabled={offset === 0}>
           previous
         </button>
-        <button type="button" onClick={handleNextClick} disabled={offset + 10 >= count}>
+        <button type="button" onClick={openNextPage} disabled={offset + 10 >= count}>
           next
         </button>
       </div>
