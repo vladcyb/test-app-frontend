@@ -24,7 +24,7 @@ export const Master = ({
   const patronymic = useField();
 
   /* state */
-  const [specializationId, setSpecializationId] = useState(-1);
+  const [specializationId, setSpecializationId] = useState(-1); // для нового мастера
   const [offset, setOffset] = useState(0);
 
   /* hooks */
