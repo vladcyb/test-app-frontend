@@ -25,6 +25,7 @@ export const MasterRow = ({
 }: PropsType) => {
   /* state */
   const [isEditing, setIsEditing] = useState(false);
+  const [specId, setSpecId] = useState(Specialization.id);
 
   /* hooks */
   const dispatch = useAppDispatch();
@@ -34,7 +35,6 @@ export const MasterRow = ({
   const nameField = useField(name);
   const surnameField = useField(surname);
   const patronymicField = useField(patronymic);
-  const [specId, setSpecId] = useState(Specialization.id);
 
   /* methods */
   const handleDelete = () => {
